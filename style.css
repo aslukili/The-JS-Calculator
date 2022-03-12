@@ -1,0 +1,32 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-boxx;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+    height: 100vh;
+}
+
+.calculator {
+    background-color: bisque;
+    padding: 5px;
+}
+
+.button {
+    width: 30px;
+    height: 23px;
+    margin-bottom: 3px;
+}
+
+.history-display {
+    height: 20px;
+}
+
+.result-display {
+    height: 23px;
+}
