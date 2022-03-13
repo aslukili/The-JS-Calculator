@@ -11,9 +11,9 @@ const currentOperationScreen = document.getElementById("current-operation-displa
 const lastOperationScreen = document.getElementById("last-operation-screen");
 const equalsButton = document.getElementById("equals")
 
-// other elemetns (clear-button, dot-button, and delete button)
+// other elemetns (clear-button and dot-button)
 const clearButton = document.getElementById("clear");
-
+const dotButton = document.getElementById("dot");
 
 //==================click buttons===============//
 // we have got all number buttons, but which one is clicked? let this function guess.
@@ -29,7 +29,7 @@ operatorButtons.forEach((button) =>
 
 equalsButton.addEventListener('click', evaluate)
 clearButton.addEventListener('click', clear)
-
+dotButton.addEventListener('click', appendDot)
 
 //============= functions for operations ============//
 function appendNumber(number){
@@ -67,6 +67,10 @@ function evaluate() {
     currentOperation = null // reseting the operator for other upcoming operations
 }
 
+function appendDot(){
+    if (shouldResetScreen) resetScreen();
+    currentOperationScreen.textContent += '.'
+}
 
 //========= other functions========//
 
@@ -80,15 +84,7 @@ function clear(){
 }
 
 
-
-
-
-
-
-
-
-
-
+//=========== basic operation functions ==============//
 function add(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }
