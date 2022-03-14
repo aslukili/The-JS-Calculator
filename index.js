@@ -15,6 +15,8 @@ const equalsButton = document.getElementById("equals")
 const clearButton = document.getElementById("clear");
 const dotButton = document.getElementById("dot");
 
+
+console.log(numberButtons);
 //==================click buttons===============//
 // we have got all number buttons, but which one is clicked? let this function guess.
 numberButtons.forEach((button) => {
@@ -27,16 +29,15 @@ operatorButtons.forEach((button) =>
     button.addEventListener('click', () => setOperation(button.textContent))
 )
 
-equalsButton.addEventListener('click', evaluate)
 clearButton.addEventListener('click', clear)
 dotButton.addEventListener('click', appendDot)
+equalsButton.addEventListener('click', evaluate)
 
 //============= functions for operations ============//
 function appendNumber(number){
     if (currentOperationScreen.textContent === '0' || shouldResetScreen){
         resetScreen(); // clears operations screen 
     }
-        
     currentOperationScreen.textContent += number;
 }
 
@@ -46,7 +47,7 @@ function resetScreen(){
 }
 
 function setOperation(operator) {
-    if (currentOperation !== null) evaluate()
+    if (currentOperation !== null) evaluate();
     firstOperand = currentOperationScreen.textContent; // we stor the first operand in the first  operation variable
     currentOperation = operator
     lastOperationScreen.textContent = `${firstOperand} ${currentOperation}`;
@@ -69,11 +70,13 @@ function evaluate() {
 
 function appendDot(){
     if (shouldResetScreen) resetScreen();
-    currentOperationScreen.textContent += '.'
+    //if there is a dot, don't add one, istead, just return
+    if (currentOperationScreen.textContent.includes('.')) return;
+    currentOperationScreen.textContent += '.';
+    
 }
 
 //========= other functions========//
-
 //clearing screen
 function clear(){
     currentOperationScreen.textContent = '0'
